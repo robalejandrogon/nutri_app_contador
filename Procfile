@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run nutri_app_streamlit.py
+web: sh setup.sh && streamlit run contador_streamlit.py
