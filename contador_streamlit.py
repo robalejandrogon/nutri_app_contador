@@ -61,6 +61,22 @@ h_list=[]
 for index,x in enumerate(myresult[0]):
   h_list.append(x)
 mycursor.close()
+
+sql2='''
+    SELECT gramaje from gramaje
+'''
+mycursor2 = mydb.cursor()
+mycursor2.execute(sql2)
+myresult2 = mycursor2.fetchall()
+h_list2=[]
+df4= pd.DataFrame([],columns=['Gramaje'])
+if len(myresult2)>0:
+    for index,x in enumerate(myresult2[0]):
+        h_list2.append(str(x))
+    print(f'H_list :{h_list2}')
+    xtra = {'Gramaje': h_list2}
+    df4 = df4.append(pd.DataFrame(xtra))
+mycursor2.close()
 mydb.close()
 
 print(f'h_list len :{len(h_list)}')
@@ -177,6 +193,11 @@ col5.metric("Salmón sin sal",str(h_list[4]),int(h_list[4])-st.session_state['sa
 col5.metric("Camarones sin sal",str(h_list[6]),int(h_list[6])-st.session_state['camarones_sin_sal'])
 col5.metric("Atunes sin sal",str(h_list[8]),int(h_list[8])-st.session_state['atunes_sin_sal'])
 
+col6,col7 = st.columns(2)
+col6.subheader('Pedidos con gramaje')
+col6.write('--------------------------- ')
+col6.dataframe(data=df4)
+#col6.table(df4)
 
 st.session_state['desayuno'] = int(h_list[18])
 st.session_state['snack'] = int(h_list[19])
