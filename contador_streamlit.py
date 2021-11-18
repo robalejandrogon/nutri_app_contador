@@ -224,7 +224,7 @@ with st.sidebar.expander("Desglose"):
     st.metric("Platillos normales",str(h_list[61]),int(h_list[61])-st.session_state['platillos_normales'])
     st.metric("Platillos sin sal",str(h_list[62]),int(h_list[62])-st.session_state['platillos_sin_sal'])
 
-col1, col2,col4,col5,col9= st.columns(6)
+col1, col2,col4,col5,col9= st.columns(5)
 col1.subheader('Tiempos')
 col1.write(' ')
 col1.metric("Desayuno",str(h_list[55]),int(h_list[55])-st.session_state['desayuno'])
